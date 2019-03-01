@@ -25,7 +25,7 @@ void main(){
 	float n = 10.;
 	vec2 st = fract(gl_FragCoord.xy/u_resolution*n);
 	
-	vec3 color = vec3(wave(st))*vec3(.7);
+	vec3 color = vec3(wave(st))*vec3(.5);
 
 
 
