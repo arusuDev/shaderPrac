@@ -10,7 +10,8 @@ float plot(vec2 st,float pct){
 	return smoothstep(pct-0.02,pct,st.y)-smoothstep(pct,pct+0.02,st.y);
 }
 
-float wave(vec2 st){
+float wave(vec2 st,float n){
+	st = (floor(st*n)+0.5)/n;
 	float d = distance(vec2(0.5,.5),st);
 	return (1. + sin(d*3. - u_time*3.)) * 0.5;
 }
@@ -23,11 +24,9 @@ float box(vec2 st,float size){
 
 void main(){
 	float n = 10.;
-	vec2 st = fract(gl_FragCoord.xy/u_resolution*n);
-	
-	vec3 color = vec3(wave(st))*vec3(.5);
+	vec2 st = gl_FragCoord.xy/u_resolution;	
 
-
-
-	gl_FragColor = vec4(color,1.0);
+	float size = wave(st,n);
+	st = fract(st*n);
+	gl_FragColor = vec4(vec3(box(st,size)),1.0);
 }
