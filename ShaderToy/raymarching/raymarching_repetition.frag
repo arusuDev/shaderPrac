@@ -2,7 +2,7 @@
 //From : https://wgld.org/d/glsl/g009.html
 
 const float sphereSize = 1.;
-const int loop_num = 16;
+const int loop_num = 64;
 const vec3 lightDir = vec3(-0.577,0.577,0.577);
 
 const float PI = 3.14159265;
